@@ -11,15 +11,13 @@ const connectDB = require('./config/database');
 const mainRoutes = require('./routes/main-router');
 const postRoutes = require('./routes/posts-router');
 const commentRoutes = require('./routes/comments-router');
+const PORT = process.env.port || 3003;
 
 //Use .env file in config folder
 require('dotenv').config({ path: './config/.env' });
 
 // Passport config
 require('./config/passport')(passport);
-
-//Connect To Database
-connectDB();
 
 //Using EJS for views
 app.set('view engine', 'ejs');
@@ -59,7 +57,10 @@ app.use('/', mainRoutes);
 app.use('/post', postRoutes);
 app.use('/comment', commentRoutes);
 
-//Server running
-app.listen(process.env.port, () => {
-    console.log('Server is running')
+//Connect To Database & Server running
+
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log('Server is running')
+    });
 });
