@@ -13,6 +13,12 @@ const postRoutes = require('./routes/posts-router');
 const commentRoutes = require('./routes/comments-router');
 const PORT = process.env.port || 3003;
 
+app.use(express.json());
+app.use(cors());
+app.use(router);
+
+export default app;
+
 //Use .env file in config folder
 require('dotenv').config({ path: './config/.env' });
 
@@ -28,8 +34,6 @@ app.use(express.static('public'));
 //Body Parsing
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
-app.use(cors());
-app.use(router);
 
 //Logging
 app.use(logger('dev'));
@@ -66,5 +70,3 @@ connectDB().then(() => {
         console.log('Server is running')
     });
 });
-
-export default app
