@@ -1,6 +1,11 @@
 const express = require('express')
 const path = require("path");
 const app = express()
+app.use(express.json());
+app.use(cors());
+app.use(router);
+
+export default app;
 
 // #############################################################################
 // Logs all request paths and method
