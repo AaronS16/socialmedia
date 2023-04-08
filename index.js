@@ -14,7 +14,6 @@ const commentRoutes = require('./routes/comments-router');
 const PORT = process.env.port || 3003;
 
 app.use(express.json());
-app.use(cors());
 app.use(router);
 
 export default app;
