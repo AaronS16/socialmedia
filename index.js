@@ -13,11 +13,6 @@ const postRoutes = require('./routes/posts-router');
 const commentRoutes = require('./routes/comments-router');
 const PORT = process.env.port || 3003;
 
-app.use(express.json());
-app.use(router);
-
-export default app;
-
 //Use .env file in config folder
 require('dotenv').config({ path: './config/.env' });
 
@@ -69,3 +64,5 @@ connectDB().then(() => {
         console.log('Server is running')
     });
 });
+
+export default app;
