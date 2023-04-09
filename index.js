@@ -64,5 +64,3 @@ connectDB().then(() => {
         console.log('Server is running')
     });
 });
-
-export default app;
